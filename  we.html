@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Cá Nhân - Academic Portfolio</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Profile Header */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (min-width: 640px) {
+            .profile-card {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+                gap: 32px;
+            }
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .profile-info h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .profile-info .title {
+            font-size: 1rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .profile-info .bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        /* Social Links & Badges */
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        @media (min-width: 640px) {
+            .social-links {
+                justify-content: flex-start;
+            }
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: #f1f5f9;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections */
+        .section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
+        /* Timeline / Items list */
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .item {
+            padding: 16px;
+            border-radius: 10px;
+            background: #fafafa;
+            border-left: 4px solid var(--accent-color);
+            transition: background 0.2s;
+        }
+
+        .item:hover {
+            background: #f1f5f9;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .item-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: #e2e8f0;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .item-sub {
+            font-size: 0.88rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .item-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Tag Badges */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            background: #e0e7ff;
+            color: #3730a3;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <header class="profile-card">
+            <img src="https://via.placeholder.com/150" alt="Avatar" class="avatar">
+            <div class="profile-info">
+                <h1>Nguyễn Văn A</h1>
+                <p class="title"><i class="fa-solid fa-graduation-cap"></i> Sinh viên / Nghiên cứu sinh</p>
+                <p class="bio">
+                    Xin chào! Tôi đam mê lập trình, khoa học máy tính và trí tuệ nhân tạo. 
+                    Trang cá nhân này lưu trữ thông tin về các dự án, bài viết và hoạt động của tôi.
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:example@gmail.com" class="social-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+                    <a href="#" class="social-btn"><i class="fa-solid fa-file-lines"></i> CV / Resume</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- About / Interests Section -->
+        <section class="section">
+            <h2 class="section-title"><i class="fa-solid fa-user"></i> Giới thiệu & Lĩnh vực quan tâm</h2>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                Hiện tại tôi đang học tập và làm việc trong lĩnh vực phát triển phần mềm, quản trị hệ thống và xử lý dữ liệu. Các định hướng chính của tôi bao gồm:
+            </p>
+            <div class="tags" style="margin-top: 15px;">
+                <span class="tag">Web Development</span>
+                <span class="tag">Python / Node.js</span>
+                <span class="tag">Automation & Bots</span>
+                <span class="tag">System Administration</span>
+            </div>
+        </section>
+
+        <!-- Education / Experience Section -->
+        <section class="section">
+            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Học vấn & Kinh nghiệm</h2>
+            <div class="item-list">
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Quản trị viên & Lập trình viên chính</span>
+                        <span class="item-date">2024 - Hiện tại</span>
+                    </div>
+                    <div class="item-sub">Dự án Game Server & Bot Discord</div>
+                    <div class="item-desc">
+                        Xây dựng hệ thống bot quản lý tự động, tối ưu hóa máy chủ, tích hợp API streaming và hệ thống quản lý cộng đồng.
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Học sinh / Sinh viên</span>
+                        <span class="item-date">2023 - 2026</span>
+                    </div>
+                    <div class="item-sub">Trường THPT / Đại học</div>
+                    <div class="item-desc">
+                        Tham gia các hoạt động phong trào, nghiên cứu kiến thức tin học và lập trình ứng dụng.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h2 class="section-title"><i class="fa-solid fa-code"></i> Dự án tiêu biểu</h2>
+            <div class="item-list">
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Discord Bot Utility & Music</span>
+                        <span class="item-date">Node.js / Python</span>
+                    </div>
+                    <div class="item-desc">
+                        Bot hỗ trợ quản lý kênh voice, phát nhạc tự động, tích hợp ticket hỗ trợ và hệ thống cấp bậc cho thành viên.
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Discord.js</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">FFmpeg</span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">GTA Roleplay Server Management System</span>
+                        <span class="item-date">Pawn / C++</span>
+                    </div>
+                    <div class="item-desc">
+                        Phát triển script tính năng, hệ thống quản lý lực lượng chức năng và tối ưu cơ sở dữ liệu server.
+                    </div>
+                    <div class="tags">
+                        <span class="tag">SA-MP</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Designed & Powered by GitHub Pages.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
